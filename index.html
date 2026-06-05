@@ -1,484 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding of Youssef & Donia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Pinyon+Script&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --paper-ivory: #FCFAF6;
-            --sage-premium: #7A8974;
-            --sage-light: #E8ECE7;
-            --gold-foil: #C5A059;
-            --dark-olive: #2C332A;
-            --bronze-wax: #A36A43;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7d8b72" />
+  <meta name="description" content="Wedding invitation for Youssef & Donia - Thursday, 23 July 2026 at Ziya by Azha." />
+  <title>Youssef & Donia | Wedding Invitation</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="portrait.png" />
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #ECEAE4;
-            color: var(--dark-olive);
-            overflow-x: hidden;
-            text-align: center;
-        }
+  <style>
+    :root {
+      --paper: #fbf8f0;
+      --paper-deep: #f3ecdf;
+      --sage: #7d8b72;
+      --sage-dark: #4f5e48;
+      --sage-soft: #dce3d5;
+      --ink: #23291f;
+      --muted: #6d725f;
+      --gold: #c0a05f;
+      --gold-soft: rgba(192, 160, 95, 0.34);
+      --shadow: 0 30px 80px rgba(35, 41, 31, 0.18);
+      --radius: 28px;
+    }
 
-        /* --- THE LUXURY REVEAL COVER --- */
-        #luxury-cover {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: url('portrait.png') center center/cover no-repeat;
-            background-color: var(--sage-premium); /* Fallback color */
-            z-index: 10000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s ease;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-        .cover-overlay {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(44, 51, 42, 0.4) 0%, rgba(252, 250, 246, 0.85) 80%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            backdrop-filter: blur(2px);
-        }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.72), transparent 25%),
+        radial-gradient(circle at 90% 0%, rgba(125, 139, 114, 0.22), transparent 34%),
+        linear-gradient(135deg, #ede7dc 0%, #d9d2c4 50%, #bfc8b8 100%);
+      overflow-x: hidden;
+    }
 
-        .cover-title {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 5rem;
-            color: var(--dark-olive);
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
-            margin-bottom: 5px;
-        }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: min(46vw, 520px);
+      height: min(46vw, 520px);
+      border-radius: 999px;
+      background: rgba(125, 139, 114, 0.18);
+      filter: blur(8px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    body::before { top: -130px; left: -120px; }
+    body::after { right: -150px; bottom: -180px; }
 
-        .cover-subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--sage-premium);
-            margin-bottom: 40px;
-        }
+    .cover {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(35, 41, 31, 0.18), rgba(251, 248, 240, 0.88)),
+        url("portrait.png") center/cover no-repeat;
+      transition: transform 1s cubic-bezier(.74, 0, .16, 1), opacity .8s ease, visibility .8s ease;
+    }
 
-        .enter-btn {
-            background: transparent;
-            border: 1px solid var(--gold-foil);
-            padding: 14px 35px;
-            font-family: 'Cinzel', serif;
-            color: var(--dark-olive);
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-            position: relative;
-            background-color: rgba(252, 250, 246, 0.6);
-        }
+    .cover.is-open {
+      transform: translateY(-105%);
+      opacity: 0;
+      visibility: hidden;
+    }
 
-        .enter-btn:hover {
-            background-color: var(--sage-premium);
-            color: white;
-            border-color: var(--sage-premium);
-            letter-spacing: 5px;
-        }
+    .cover-card {
+      width: min(92vw, 560px);
+      padding: clamp(34px, 7vw, 68px) 28px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: var(--radius);
+      background: rgba(251, 248, 240, 0.78);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
 
-        /* --- MAIN STATIONERY PAGE --- */
-        #main-invitation {
-            display: none; /* Safely hides content entirely to prevent scrolling bugs */
-            opacity: 0;
-            padding: 60px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            transition: opacity 1.5s ease;
-        }
+    .cover-card::before,
+    .details-card::before,
+    .info-card::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid var(--gold-soft);
+      border-radius: calc(var(--radius) - 10px);
+      pointer-events: none;
+    }
 
-        /* --- PHYSICAL CARD STYLE SUITE --- */
-        .card-panel {
-            background: var(--paper-ivory);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            padding: 60px 40px;
-            margin-bottom: 40px;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(44, 51, 42, 0.08);
-            z-index: 1;
-            overflow: hidden; /* Contains the inner elements cleanly */
-        }
+    .eyebrow,
+    .section-kicker,
+    .small-caps {
+      font-family: "Cinzel", serif;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      font-size: .78rem;
+      font-weight: 600;
+    }
 
-        /* Double Gold Inner Border */
-        .card-panel::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            bottom: 15px;
-            left: 15px;
-            right: 15px;
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            pointer-events: none;
-            z-index: 10;
-        }
+    .cover-title,
+    .script {
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      line-height: .9;
+      color: var(--sage-dark);
+    }
 
-        .script-accent {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 4.5rem;
-            color: var(--gold-foil);
-            line-height: 1.2;
-            margin: 10px 0;
-        }
+    .cover-title {
+      font-size: clamp(4.2rem, 13vw, 8rem);
+      margin: 22px 0 14px;
+    }
 
-        .serif-heading {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--dark-olive);
-            margin: 20px 0;
-        }
+    .cover-date {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-family: "Cinzel", serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .9rem;
+    }
 
-        .card-text {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            letter-spacing: 1px;
-            font-weight: 300;
-            color: var(--dark-olive);
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
+    .btn {
+      appearance: none;
+      border: 1px solid var(--sage);
+      background: var(--sage);
+      color: #fff;
+      border-radius: 999px;
+      padding: 15px 28px;
+      font-family: "Cinzel", serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+      box-shadow: 0 14px 28px rgba(79, 94, 72, .18);
+    }
 
-        /* --- THE VELLUM BAND & WAX SEAL (FIXED TO PREVENT OVERLAP) --- */
-        .vellum-wrapper {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 45px;
-            margin-bottom: 10px;
-        }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(79, 94, 72, .24);
+      background: transparent;
+      color: var(--sage-dark);
+    }
 
-        .vellum-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: -40px; /* Stretches outside the padding */
-            right: -40px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.5);
-            border-top: 1px solid rgba(197, 160, 89, 0.3);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
-            transform: translateY(-50%);
-            z-index: 1;
-        }
+    .btn.secondary {
+      background: transparent;
+      color: var(--sage-dark);
+      border-color: var(--gold);
+      box-shadow: none;
+    }
 
-        .digital-wax-seal {
-            width: 60px;
-            height: 60px;
-            background: var(--bronze-wax);
-            border-radius: 50%;
-            box-shadow: inset 0 0 8px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Cinzel', serif;
-            color: rgba(255,255,255,0.7);
-            font-size: 14px;
-            font-weight: bold;
-            border: 2px solid rgba(0,0,0,0.05);
-            user-select: none;
-            position: relative;
-            z-index: 5;
-        }
+    .btn.secondary:hover {
+      background: var(--sage);
+      color: white;
+      border-color: var(--sage);
+    }
 
-        /* --- TIMELINE SUITE --- */
-        .timeline-container {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
+    .page {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: clamp(28px, 5vw, 72px) 0 60px;
+    }
 
-        .timeline-row {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .suite {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: clamp(22px, 4vw, 46px);
+      align-items: stretch;
+    }
 
-        .timeline-date {
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            color: var(--gold-foil);
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-        }
+    .photo-card,
+    .details-card,
+    .info-card {
+      background: rgba(251, 248, 240, .88);
+      border: 1px solid rgba(192, 160, 95, .28);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
 
-        /* --- COUNTDOWN --- */
-        .timer-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            flex-wrap: wrap; /* Prevents overlap on very small screens */
-        }
+    .photo-card {
+      min-height: 760px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.14)),
+        url("portrait.png") center 35%/cover no-repeat;
+      isolation: isolate;
+    }
 
-        .timer-unit {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--dark-olive);
-            min-width: 60px;
-        }
+    .photo-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 46%, rgba(35, 41, 31, .34) 100%);
+      z-index: -1;
+    }
 
-        .timer-unit sub {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 5px;
-        }
+    .photo-border {
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255, 255, 255, .68);
+      border-radius: calc(var(--radius) - 12px);
+      pointer-events: none;
+    }
 
-        /* --- LUXURY MAP AND RSVP BUTTONS --- */
-        .map-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: var(--sage-premium);
-            color: white;
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-top: 25px;
-            transition: all 0.3s;
-            border: 1px solid var(--sage-premium);
-            position: relative;
-            z-index: 5;
-        }
+    .photo-title {
+      position: absolute;
+      left: clamp(24px, 5vw, 54px);
+      bottom: clamp(30px, 5vw, 54px);
+      color: #fffdf6;
+      text-shadow: 0 5px 22px rgba(0,0,0,.42);
+      text-align: left;
+    }
 
-        .map-btn:hover {
-            background-color: transparent;
-            color: var(--dark-olive);
-            border-color: var(--dark-olive);
-        }
+    .photo-title .script {
+      display: block;
+      color: #fffdf6;
+      font-size: clamp(4.8rem, 10vw, 8rem);
+      margin: 0;
+    }
 
-        /* --- PREMIUM RSVP FORM --- */
-        .rsvp-form {
-            max-width: 450px;
-            margin: 30px auto 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            text-align: left;
-            position: relative;
-            z-index: 5;
-        }
+    .photo-title .small-caps {
+      color: #fffdf6;
+      letter-spacing: .38em;
+      font-size: .86rem;
+    }
 
-        .rsvp-form input, .rsvp-form select {
-            width: 100%;
-            padding: 14px;
-            background-color: transparent;
-            border: none;
-            border-bottom: 1px solid var(--gold-foil);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            color: var(--dark-olive);
-            outline: none;
-        }
+    .details-card {
+      padding: clamp(38px, 6vw, 64px) clamp(22px, 4vw, 52px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
 
-        .rsvp-form label {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            color: var(--sage-premium);
-        }
+    .floral-corner {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      pointer-events: none;
+      opacity: .9;
+    }
 
-        .rsvp-submit {
-            background-color: var(--dark-olive);
-            color: white;
-            border: none;
-            padding: 16px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
+    .floral-corner::before,
+    .floral-corner::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 35%, #fff 0 12%, #fff8e7 13% 30%, #e6d8bb 31% 32%, transparent 34%),
+        conic-gradient(from 20deg, transparent, rgba(255,255,255,.95), transparent, rgba(255,255,255,.86), transparent);
+      border: 1px solid rgba(192,160,95,.15);
+      box-shadow: 0 12px 26px rgba(79, 94, 72, .12);
+    }
 
-        .rsvp-submit:hover {
-            background-color: var(--gold-foil);
-        }
+    .floral-corner::before { width: 116px; height: 116px; left: 10px; top: 38px; }
+    .floral-corner::after { width: 86px; height: 86px; right: 22px; bottom: 34px; }
 
-        @media (max-width: 600px) {
-            .cover-title { font-size: 3.8rem; }
-            .script-accent { font-size: 3.5rem; }
-            .card-panel { padding: 40px 20px; }
-            .vellum-wrapper::before {
-                left: -20px; /* Adjust border stretch for mobile padding */
-                right: -20px;
-            }
-        }
-    </style>
+    .floral-corner span,
+    .floral-corner i,
+    .floral-corner b {
+      position: absolute;
+      display: block;
+      width: 54px;
+      height: 20px;
+      border-radius: 80% 0 80% 0;
+      background: linear-gradient(90deg, rgba(125,139,114,.78), rgba(214,224,203,.86));
+      transform-origin: center;
+      opacity: .8;
+    }
+
+    .floral-corner span { left: 110px; top: 34px; transform: rotate(28deg); }
+    .floral-corner i { left: 22px; top: 158px; transform: rotate(-38deg); }
+    .floral-corner b { right: 8px; top: 122px; transform: rotate(78deg); }
+
+    .floral-left { left: -34px; bottom: -46px; }
+    .floral-right { right: -34px; top: -42px; transform: scaleX(-1) rotate(8deg); }
+
+    .names {
+      font-size: clamp(4.2rem, 9vw, 7.2rem);
+      margin: 28px 0 12px;
+      color: var(--sage-dark);
+    }
+
+    .divider {
+      width: min(260px, 70%);
+      height: 1px;
+      margin: 18px auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      position: relative;
+    }
+
+    .divider::after {
+      content: "♥";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--paper);
+      color: var(--sage);
+      padding: 0 12px;
+      font-size: .85rem;
+    }
+
+    .intro-copy {
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 30px auto 0;
+      width: min(440px, 100%);
+      display: grid;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .detail-list li {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: center;
+      font-family: "Cinzel", serif;
+      letter-spacing: .12em;
+      color: var(--ink);
+      font-size: clamp(.9rem, 2vw, 1.05rem);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--sage);
+      color: var(--sage-dark);
+      font-size: 1.15rem;
+      background: rgba(220, 227, 213, .45);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .info-card {
+      padding: 38px 28px;
+      text-align: center;
+    }
+
+    .info-card h2 {
+      margin: 0 0 14px;
+      font-family: "Cinzel", serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: var(--sage-dark);
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .95rem;
+    }
+
+    .timer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .timer div {
+      padding: 14px 8px;
+      border-radius: 16px;
+      background: rgba(220, 227, 213, .5);
+      border: 1px solid rgba(125, 139, 114, .22);
+    }
+
+    .timer strong {
+      display: block;
+      font-family: "Cinzel", serif;
+      font-size: clamp(1.1rem, 3vw, 1.55rem);
+      color: var(--sage-dark);
+    }
+
+    .timer span {
+      display: block;
+      margin-top: 4px;
+      font-size: .62rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid rgba(125,139,114,.35);
+      border-radius: 12px;
+      background: rgba(255,255,255,.45);
+      font: inherit;
+      color: var(--ink);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 34px;
+      font-family: "Cinzel", serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .72rem;
+    }
+
+    @media (max-width: 900px) {
+      .suite { grid-template-columns: 1fr; }
+      .photo-card { min-height: 760px; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .page { width: min(100% - 18px, 1120px); padding-top: 16px; }
+      .photo-card { min-height: 68vh; background-position: center top; }
+      .photo-title { left: 26px; bottom: 30px; }
+      .photo-title .script { font-size: 4.2rem; }
+      .details-card { padding: 42px 18px; }
+      .names { font-size: 4rem; }
+      .detail-list li { grid-template-columns: 40px 1fr; gap: 10px; letter-spacing: .08em; }
+      .icon { width: 36px; height: 36px; font-size: 1rem; }
+      .timer { grid-template-columns: repeat(2, 1fr); }
+      .floral-corner { width: 170px; height: 170px; opacity: .72; }
+      .floral-corner::before { width: 88px; height: 88px; }
+      .floral-corner::after { width: 66px; height: 66px; }
+    }
+  </style>
 </head>
 <body>
+  <div class="cover" id="cover" aria-label="Invitation cover">
+    <div class="cover-card">
+      <div class="eyebrow">Wedding Invitation</div>
+      <h1 class="cover-title">Youssef & Donia</h1>
+      <p class="cover-date">Thursday · 23 July 2026 · 7:00 PM</p>
+      <button class="btn" type="button" id="openInvitation">Open Invitation</button>
+    </div>
+  </div>
 
-    <div id="luxury-cover">
-        <div class="cover-overlay">
-            <h1 class="cover-title">Youssef & Donia</h1>
-            <p class="cover-subtitle">The Wedding Invitation</p>
-            <button class="enter-btn" onclick="liftVellum()">Open Invitation</button>
+  <main class="page" id="invitation">
+    <section class="suite" aria-labelledby="wedding-title">
+      <article class="photo-card" aria-label="Youssef and Donia portrait">
+        <div class="photo-border"></div>
+        <div class="photo-title">
+          <span class="small-caps">The Wedding of</span>
+          <h2 class="script" id="wedding-title">Youssef<br />& Donia</h2>
         </div>
-    </div>
+      </article>
 
-    <div id="main-invitation">
-        
-        <section class="card-panel">
-            <h2 class="script-accent">Youssef & Donia</h2>
-            <p class="card-text">
-                request the honor of your presence to celebrate their marriage union and the beginning of their forever.
-            </p>
-            
-            <div class="serif-heading" style="font-size: 1.3rem; margin-top: 40px; margin-bottom: 5px;">July 23, 2026</div>
-            <div class="serif-heading" style="font-size: 1.1rem; color: var(--gold-foil); margin-top: 0;">At 7:00 PM</div>
-            
-            <div class="vellum-wrapper">
-                <div class="digital-wax-seal">Y&D</div>
-            </div>
-        </section>
+      <article class="details-card">
+        <div class="floral-corner floral-left"><span></span><i></i><b></b></div>
+        <div class="floral-corner floral-right"><span></span><i></i><b></b></div>
 
-        <section class="card-panel">
-            <h2 class="serif-heading">Our Story</h2>
-            <div class="timeline-container">
-                <div class="timeline-row">
-                    <span class="timeline-date">September 21, 2020</span>
-                    <p class="card-text" style="font-weight: 400;"><strong>The University Chapters</strong></p>
-                    <p class="card-text">Fresh into the start of our second year at uni, our paths crossed. What began as a simple conversation quickly rewrote our entire world.</p>
-                </div>
-                <div class="timeline-row">
-                    <span class="timeline-date">The Romance</span>
-                    <p class="card-text" style="font-weight: 400;"><strong>Two Hearts, One Rhythm</strong></p>
-                    <p class="card-text">We officially entered our relationship, becoming each other's ultimate sounding board and absolute best friend.</p>
-                </div>
-                <div class="timeline-row">
-                    <span class="timeline-date">June 21, 2024</span>
-                    <p class="card-text" style="font-weight: 400;"><strong>The Promise of Forever</strong></p>
-                    <p class="card-text">Four years of shared dreams culminated in a beautiful question, bringing absolute magic to our lives with a joyful 'Yes!'</p>
-                </div>
-            </div>
-        </section>
+        <p class="section-kicker">Together with their families</p>
+        <div class="divider"></div>
+        <h1 class="script names">Youssef & Donia</h1>
+        <p class="intro-copy">request the pleasure of your company as they celebrate their wedding day.</p>
 
-        <section class="card-panel">
-            <h2 class="serif-heading">The Venue</h2>
-            <h3 class="serif-heading" style="font-size: 1.3rem; color: var(--gold-foil); margin: 0 0 10px 0;">Ziya by Azha</h3>
-            <p class="card-text"><em>Ceremony & Celebration are held entirely at the same location.</em></p>
-            
-            <a href="https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw" target="_blank" class="map-btn">Navigate to Venue</a>
+        <ul class="detail-list" aria-label="Wedding details">
+          <li><span class="icon" aria-hidden="true">☷</span><span>Thursday, 23/07/2026</span></li>
+          <li><span class="icon" aria-hidden="true">◷</span><span>7:00 PM</span></li>
+          <li><span class="icon" aria-hidden="true">⌖</span><span>Ziya by Azha</span></li>
+        </ul>
 
-            <hr style="border: none; border-top: 1px solid rgba(197, 160, 89, 0.2); margin: 40px 0;">
+        <div class="actions">
+          <a class="btn" href="https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw" target="_blank" rel="noopener">Navigate</a>
+          <a class="btn secondary" href="wedding.ics" download>Add to Calendar</a>
+        </div>
+      </article>
+    </section>
 
-            <p class="serif-heading" style="font-size: 0.85rem; margin: 0;">Time Remaining</p>
-            <div class="timer-grid">
-                <div class="timer-unit"><span id="d">00</span><sub>Days</sub></div>
-                <div class="timer-unit"><span id="h">00</span><sub>Hours</sub></div>
-                <div class="timer-unit"><span id="m">00</span><sub>Mins</sub></div>
-                <div class="timer-unit"><span id="s">00</span><sub>Secs</sub></div>
-            </div>
-        </section>
+    <section class="info-grid" aria-label="More information">
+      <article class="info-card">
+        <h2>Countdown</h2>
+        <p>Counting down to the celebration.</p>
+        <div class="timer" aria-live="polite">
+          <div><strong id="days">00</strong><span>Days</span></div>
+          <div><strong id="hours">00</strong><span>Hours</span></div>
+          <div><strong id="mins">00</strong><span>Mins</span></div>
+          <div><strong id="secs">00</strong><span>Secs</span></div>
+        </div>
+      </article>
 
-        <section class="card-panel">
-            <h2 class="serif-heading">RSVP</h2>
-            <p class="card-text">We kindly request your response by the <strong>10th of July, 2026</strong>.</p>
-            
-            <form class="rsvp-form" action="#" method="POST">
-                <div>
-                    <label>Your Full Name</label>
-                    <input type="text" required placeholder="Enter name">
-                </div>
-                <div>
-                    <label>Will You Attend?</label>
-                    <select required>
-                        <option value="" disabled selected>Please select</option>
-                        <option value="accept">Joyfully Accepts</option>
-                        <option value="decline">Regretfully Declines</option>
-                    </select>
-                </div>
-                <button type="submit" class="rsvp-submit">Send Response</button>
-            </form>
+      <article class="info-card">
+        <h2>Venue</h2>
+        <p><strong>Ziya by Azha</strong><br />Ceremony and celebration will take place at the same venue.</p>
+        <div class="actions">
+          <a class="btn secondary" href="https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw" target="_blank" rel="noopener">Open Map</a>
+        </div>
+      </article>
 
-            <div style="margin-top: 50px; padding: 20px; background-color: var(--sage-light); border-radius: 4px; position: relative; z-index: 5;">
-                <p class="card-text" style="font-size: 0.85rem; font-style: italic;">
-                    <strong>A Friendly Note:</strong> We love your little ones dearly! However, we want you to have a night off to let loose, drink champagne, and hit the dance floor without any bedtime curfews. Consider this your official excuse for a guilt-free parents' night out—this is strictly an adults-only affair!
-                </p>
-            </div>
-        </section>
+      <article class="info-card">
+        <h2>RSVP</h2>
+        <p>Please let us know whether you can celebrate with us before <strong>10 July 2026</strong>.</p>
+        <form id="rsvpForm" style="margin-top: 18px; display: grid; gap: 12px; text-align: left;">
+          <label class="small-caps" for="guestName" style="font-size: .66rem;">Your name</label>
+          <input id="guestName" name="guestName" type="text" placeholder="Enter your name" required />
+          <label class="small-caps" for="attendance" style="font-size: .66rem;">Attendance</label>
+          <select id="attendance" name="attendance" required>
+            <option value="" disabled selected>Select response</option>
+            <option>Joyfully accepts</option>
+            <option>Regretfully declines</option>
+          </select>
+          <button class="btn" type="submit" style="width: 100%; margin-top: 4px;">Prepare RSVP</button>
+        </form>
+      </article>
+    </section>
 
-    </div>
+    <p class="footer">With love · Youssef & Donia · 23/07/2026</p>
+  </main>
 
-    <script>
-        // Smooth luxury lift reveal
-        function liftVellum() {
-            const cover = document.getElementById('luxury-cover');
-            const main = document.getElementById('main-invitation');
-            
-            // Start the upward slide and fade
-            cover.style.transform = 'translateY(-100vh)';
-            cover.style.opacity = '0';
-            
-            setTimeout(() => {
-                // Completely remove cover from layout flow so it doesn't trap mouse clicks
-                cover.style.display = 'none'; 
-                
-                // Introduce the main content
-                main.style.display = 'block';
-                
-                // Tiny delay to allow display:block to register before changing opacity for smooth fade
-                setTimeout(() => {
-                    main.style.opacity = '1';
-                }, 50);
-            }, 1000); // Waits for the 1.2s CSS transition to finish visually
-        }
+  <script>
+    const cover = document.getElementById('cover');
+    const openButton = document.getElementById('openInvitation');
 
-        // Live Countdown Clock
-        const targetDate = new Date("July 23, 2026 19:00:00").getTime(); // Set to 7:00 PM
+    function openInvitation() {
+      cover.classList.add('is-open');
+      window.setTimeout(() => {
+        cover.setAttribute('aria-hidden', 'true');
+        document.getElementById('invitation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 500);
+    }
 
-        setInterval(function() {
-            const now = new Date().getTime();
-            const remainder = targetDate - now;
+    openButton.addEventListener('click', openInvitation);
+    document.addEventListener('keydown', (event) => {
+      if ((event.key === 'Enter' || event.key === ' ') && !cover.classList.contains('is-open')) {
+        openInvitation();
+      }
+    });
 
-            const days = Math.floor(remainder / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((remainder % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((remainder % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((remainder % (1000 * 60)) / 1000);
+    const weddingDate = new Date('2026-07-23T19:00:00+03:00').getTime();
+    const units = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      mins: document.getElementById('mins'),
+      secs: document.getElementById('secs')
+    };
 
-            // Ensure values don't show negative if the day has passed
-            if (remainder > 0) {
-                document.getElementById("d").innerText = days < 10 ? "0" + days : days;
-                document.getElementById("h").innerText = hours < 10 ? "0" + hours : hours;
-                document.getElementById("m").innerText = minutes < 10 ? "0" + minutes : minutes;
-                document.getElementById("s").innerText = seconds < 10 ? "0" + seconds : seconds;
-            } else {
-                document.getElementById("d").innerText = "00";
-                document.getElementById("h").innerText = "00";
-                document.getElementById("m").innerText = "00";
-                document.getElementById("s").innerText = "00";
-            }
-        }, 1000);
-    </script>
+    function pad(value) {
+      return String(Math.max(0, value)).padStart(2, '0');
+    }
+
+    function updateCountdown() {
+      const distance = weddingDate - Date.now();
+      if (distance <= 0) {
+        units.days.textContent = '00';
+        units.hours.textContent = '00';
+        units.mins.textContent = '00';
+        units.secs.textContent = '00';
+        return;
+      }
+
+      units.days.textContent = pad(Math.floor(distance / 86400000));
+      units.hours.textContent = pad(Math.floor((distance % 86400000) / 3600000));
+      units.mins.textContent = pad(Math.floor((distance % 3600000) / 60000));
+      units.secs.textContent = pad(Math.floor((distance % 60000) / 1000));
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    document.getElementById('rsvpForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const name = document.getElementById('guestName').value.trim();
+      const attendance = document.getElementById('attendance').value;
+      const subject = `Wedding RSVP - ${name}`;
+      const body = `RSVP for Youssef & Donia wedding:\nName: ${name}\nAttendance: ${attendance}`;
+
+      if (navigator.share) {
+        await navigator.share({ title: 'Wedding RSVP', text: body });
+      } else {
+        window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+    });
+  </script>
 </body>
 </html>
