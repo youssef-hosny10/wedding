@@ -428,16 +428,6 @@
       margin-top: 24px;
     }
 
-    input, select {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid rgba(125,139,114,.35);
-      border-radius: 12px;
-      background: rgba(255,255,255,.45);
-      font: inherit;
-      color: var(--ink);
-    }
-
     .footer {
       text-align: center;
       color: var(--muted);
@@ -506,8 +496,8 @@
         </ul>
 
         <div class="actions">
-          <a class="btn" href="https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw" target="_blank" rel="noopener">Navigate</a>
-          <a class="btn secondary" href="wedding.ics" download>Add to Calendar</a>
+          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdj2nV5WhxTD3rOfWgEqQSYA3llViY_ETFsgMb74E9EtYpRjA/viewform" target="_blank" rel="noopener">RSVP Now</a>
+          <a class="btn secondary" href="https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw" target="_blank" rel="noopener">Navigate</a>
         </div>
       </article>
     </section>
@@ -534,18 +524,10 @@
 
       <article class="info-card">
         <h2>RSVP</h2>
-        <p>Please let us know whether you can celebrate with us before <strong>10 July 2026</strong>.</p>
-        <form id="rsvpForm" style="margin-top: 18px; display: grid; gap: 12px; text-align: left;">
-          <label class="small-caps" for="guestName" style="font-size: .66rem;">Your name</label>
-          <input id="guestName" name="guestName" type="text" placeholder="Enter your name" required />
-          <label class="small-caps" for="attendance" style="font-size: .66rem;">Attendance</label>
-          <select id="attendance" name="attendance" required>
-            <option value="" disabled selected>Select response</option>
-            <option>Joyfully accepts</option>
-            <option>Regretfully declines</option>
-          </select>
-          <button class="btn" type="submit" style="width: 100%; margin-top: 4px;">Prepare RSVP</button>
-        </form>
+        <p>Responses are saved in Google Forms, so you can see who accepted, who declined, timestamps, and the summary charts.</p>
+        <div class="actions">
+          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdj2nV5WhxTD3rOfWgEqQSYA3llViY_ETFsgMb74E9EtYpRjA/viewform" target="_blank" rel="noopener">Open RSVP Form</a>
+        </div>
       </article>
     </section>
 
@@ -601,20 +583,6 @@
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
-    document.getElementById('rsvpForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const name = document.getElementById('guestName').value.trim();
-      const attendance = document.getElementById('attendance').value;
-      const subject = `Wedding RSVP - ${name}`;
-      const body = `RSVP for Youssef & Donia wedding:\nName: ${name}\nAttendance: ${attendance}`;
-
-      if (navigator.share) {
-        await navigator.share({ title: 'Wedding RSVP', text: body });
-      } else {
-        window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      }
-    });
   </script>
 </body>
 </html>
