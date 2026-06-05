@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#7d8b72" />
+  <meta name="theme-color" content="#758952" />
   <meta name="description" content="Wedding invitation for Youssef & Donia - Thursday, 23 July 2026 at Ziya by Azha." />
   <title>Youssef & Donia | Wedding Invitation</title>
 
@@ -14,17 +14,18 @@
 
   <style>
     :root {
-      --paper: #fbf8f0;
-      --paper-deep: #f3ecdf;
-      --sage: #7d8b72;
-      --sage-dark: #4f5e48;
-      --sage-soft: #dce3d5;
-      --ink: #23291f;
-      --muted: #6d725f;
-      --gold: #c0a05f;
-      --gold-soft: rgba(192, 160, 95, 0.34);
-      --shadow: 0 30px 80px rgba(35, 41, 31, 0.18);
-      --radius: 28px;
+      --olive: #758952;
+      --light-olive: #B5C49A;
+      --dusty-pink: #E8C0C5;
+      --pale-pink: #F4E2E4;
+      --ivory: #F6F7EC;
+      --deep-olive: #263626;
+      --soft-ink: #303324;
+      --muted: #6e765e;
+      --gold: #bd9452;
+      --gold-soft: rgba(189, 148, 82, 0.32);
+      --shadow: 0 28px 80px rgba(38, 54, 38, 0.18);
+      --radius: 30px;
     }
 
     * { box-sizing: border-box; }
@@ -34,11 +35,11 @@
       margin: 0;
       min-height: 100vh;
       font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
+      color: var(--soft-ink);
       background:
-        radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.72), transparent 25%),
-        radial-gradient(circle at 90% 0%, rgba(125, 139, 114, 0.22), transparent 34%),
-        linear-gradient(135deg, #ede7dc 0%, #d9d2c4 50%, #bfc8b8 100%);
+        radial-gradient(circle at 15% 6%, rgba(232, 192, 197, .45), transparent 28%),
+        radial-gradient(circle at 88% 0%, rgba(181, 196, 154, .52), transparent 34%),
+        linear-gradient(135deg, var(--ivory) 0%, var(--pale-pink) 45%, #e4ead9 100%);
       overflow-x: hidden;
     }
 
@@ -46,16 +47,16 @@
     body::after {
       content: "";
       position: fixed;
-      width: min(46vw, 520px);
-      height: min(46vw, 520px);
+      width: min(54vw, 560px);
+      height: min(54vw, 560px);
       border-radius: 999px;
-      background: rgba(125, 139, 114, 0.18);
-      filter: blur(8px);
       pointer-events: none;
       z-index: -1;
+      filter: blur(10px);
     }
-    body::before { top: -130px; left: -120px; }
-    body::after { right: -150px; bottom: -180px; }
+
+    body::before { left: -160px; bottom: -180px; background: rgba(232, 192, 197, .32); }
+    body::after { right: -190px; top: -150px; background: rgba(117, 137, 82, .18); }
 
     .cover {
       position: fixed;
@@ -63,116 +64,140 @@
       z-index: 100;
       display: grid;
       place-items: center;
-      padding: 22px;
+      padding: 24px;
       background:
-        linear-gradient(180deg, rgba(35, 41, 31, 0.18), rgba(251, 248, 240, 0.88)),
-        url("portrait.png") center/cover no-repeat;
-      transition: transform 1s cubic-bezier(.74, 0, .16, 1), opacity .8s ease, visibility .8s ease;
+        radial-gradient(circle at 50% 15%, rgba(255,255,255,.74), transparent 26%),
+        linear-gradient(180deg, #fbfaf3 0%, #f1eee2 54%, #eee4dc 100%);
+      transition: opacity .85s ease, visibility .85s ease;
     }
 
     .cover.is-open {
-      transform: translateY(-105%);
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
+      transition-delay: .95s;
     }
 
-    .cover-card {
-      width: min(92vw, 560px);
-      padding: clamp(34px, 7vw, 68px) 28px;
+    .envelope-stage {
+      width: min(86vw, 640px);
       text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.62);
-      border-radius: var(--radius);
-      background: rgba(251, 248, 240, 0.78);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      transform: translateY(-2vh);
+    }
+
+    .envelope {
       position: relative;
+      width: min(86vw, 620px);
+      aspect-ratio: 1.55 / 1;
+      margin: 0 auto;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+      filter: drop-shadow(0 22px 34px rgba(38,54,38,.28));
+      perspective: 1200px;
+    }
+
+    .envelope-body {
+      position: absolute;
+      inset: 0;
+      border-radius: 6px;
+      background: linear-gradient(145deg, #263a2d, #1f3127);
       overflow: hidden;
     }
 
-    .cover-card::before,
-    .details-card::before,
-    .info-card::before {
+    .envelope-body::before,
+    .envelope-body::after {
       content: "";
       position: absolute;
-      inset: 14px;
-      border: 1px solid var(--gold-soft);
-      border-radius: calc(var(--radius) - 10px);
-      pointer-events: none;
+      inset: 0;
+      background: linear-gradient(145deg, transparent 49.5%, rgba(255,255,255,.18) 50%, transparent 50.7%);
+      opacity: .28;
     }
 
-    .eyebrow,
-    .section-kicker,
-    .small-caps {
+    .envelope-body::after {
+      transform: scaleX(-1);
+    }
+
+    .envelope-flap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 58%;
+      transform-origin: top center;
+      background: linear-gradient(180deg, #314836, #203328);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-radius: 6px 6px 0 0;
+      transition: transform .95s cubic-bezier(.2,.7,.18,1.05), filter .7s ease;
+      z-index: 4;
+    }
+
+    .cover.is-opening .envelope-flap {
+      transform: rotateX(176deg);
+      filter: brightness(1.08);
+    }
+
+    .wax-seal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: clamp(72px, 13vw, 108px);
+      height: clamp(72px, 13vw, 108px);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.45);
+      background:
+        radial-gradient(circle at 38% 34%, rgba(255,255,255,.45), transparent 18%),
+        radial-gradient(circle at center, #cf9d54 0 45%, #9f6a2e 72%, #7f5224 100%);
+      box-shadow: inset 0 5px 16px rgba(255,255,255,.22), inset 0 -7px 18px rgba(80,42,13,.42), 0 10px 22px rgba(0,0,0,.22);
+      z-index: 6;
+      display: grid;
+      place-items: center;
+      color: #fff7e4;
+      font-size: clamp(1.25rem, 4vw, 2rem);
+      transition: transform .45s ease, opacity .5s ease;
+    }
+
+    .wax-seal::before {
+      content: "Y&D";
       font-family: "Cinzel", serif;
+      font-size: .68em;
+      letter-spacing: .04em;
+      border: 1px solid rgba(255,255,255,.65);
+      width: 66%;
+      height: 66%;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    .cover.is-opening .wax-seal {
+      transform: translate(-50%, -50%) scale(.72);
+      opacity: 0;
+    }
+
+    .tap-text {
+      position: absolute;
+      left: 50%;
+      top: calc(50% + clamp(56px, 10vw, 82px));
+      transform: translateX(-50%);
+      z-index: 7;
+      color: rgba(255,255,255,.72);
+      font-family: "Cinzel", serif;
+      letter-spacing: .42em;
+      font-size: clamp(.72rem, 2.4vw, 1rem);
+      white-space: nowrap;
+    }
+
+    .cover.is-opening .tap-text { opacity: 0; }
+
+    .cover-title-small {
+      margin: 34px 0 0;
+      font-family: "Cinzel", serif;
+      color: var(--deep-olive);
       letter-spacing: .28em;
       text-transform: uppercase;
-      color: var(--sage-dark);
-      font-size: .78rem;
-      font-weight: 600;
-    }
-
-    .cover-title,
-    .script {
-      font-family: "Great Vibes", cursive;
-      font-weight: 400;
-      line-height: .9;
-      color: var(--sage-dark);
-    }
-
-    .cover-title {
-      font-size: clamp(4.2rem, 13vw, 8rem);
-      margin: 22px 0 14px;
-    }
-
-    .cover-date {
-      margin: 0 0 28px;
-      color: var(--muted);
-      font-family: "Cinzel", serif;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      font-size: .9rem;
-    }
-
-    .btn {
-      appearance: none;
-      border: 1px solid var(--sage);
-      background: var(--sage);
-      color: #fff;
-      border-radius: 999px;
-      padding: 15px 28px;
-      font-family: "Cinzel", serif;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      font-size: .78rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
-      box-shadow: 0 14px 28px rgba(79, 94, 72, .18);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 34px rgba(79, 94, 72, .24);
-      background: transparent;
-      color: var(--sage-dark);
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: var(--sage-dark);
-      border-color: var(--gold);
-      box-shadow: none;
-    }
-
-    .btn.secondary:hover {
-      background: var(--sage);
-      color: white;
-      border-color: var(--sage);
+      font-size: .74rem;
     }
 
     .page {
@@ -183,7 +208,7 @@
 
     .suite {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, .96fr);
       gap: clamp(22px, 4vw, 46px);
       align-items: stretch;
     }
@@ -191,8 +216,8 @@
     .photo-card,
     .details-card,
     .info-card {
-      background: rgba(251, 248, 240, .88);
-      border: 1px solid rgba(192, 160, 95, .28);
+      background: rgba(246, 247, 236, .88);
+      border: 1px solid rgba(117, 137, 82, .22);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       position: relative;
@@ -202,8 +227,8 @@
     .photo-card {
       min-height: 760px;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.14)),
-        url("portrait.png") center 35%/cover no-repeat;
+        linear-gradient(180deg, rgba(38,54,38,.05), rgba(38,54,38,.24)),
+        url("portrait.png") center 34%/cover no-repeat;
       isolation: isolate;
     }
 
@@ -211,14 +236,14 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 46%, rgba(35, 41, 31, .34) 100%);
+      background: linear-gradient(180deg, transparent 42%, rgba(38,54,38,.38) 100%);
       z-index: -1;
     }
 
     .photo-border {
       position: absolute;
       inset: 18px;
-      border: 1px solid rgba(255, 255, 255, .68);
+      border: 1px solid rgba(246,247,236,.72);
       border-radius: calc(var(--radius) - 12px);
       pointer-events: none;
     }
@@ -227,22 +252,36 @@
       position: absolute;
       left: clamp(24px, 5vw, 54px);
       bottom: clamp(30px, 5vw, 54px);
-      color: #fffdf6;
+      color: var(--ivory);
       text-shadow: 0 5px 22px rgba(0,0,0,.42);
       text-align: left;
     }
 
-    .photo-title .script {
-      display: block;
-      color: #fffdf6;
-      font-size: clamp(4.8rem, 10vw, 8rem);
-      margin: 0;
+    .small-caps,
+    .section-kicker,
+    .eyebrow {
+      font-family: "Cinzel", serif;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--olive);
+      font-size: .78rem;
+      font-weight: 600;
     }
 
-    .photo-title .small-caps {
-      color: #fffdf6;
-      letter-spacing: .38em;
-      font-size: .86rem;
+    .photo-title .small-caps { color: var(--ivory); letter-spacing: .38em; font-size: .86rem; }
+
+    .script {
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      line-height: .9;
+      color: var(--olive);
+    }
+
+    .photo-title .script {
+      display: block;
+      color: var(--ivory);
+      font-size: clamp(4.8rem, 10vw, 8rem);
+      margin: 0;
     }
 
     .details-card {
@@ -251,6 +290,20 @@
       flex-direction: column;
       justify-content: center;
       text-align: center;
+      background:
+        radial-gradient(circle at 10% 7%, rgba(232,192,197,.46), transparent 23%),
+        radial-gradient(circle at 95% 92%, rgba(181,196,154,.42), transparent 25%),
+        rgba(246, 247, 236, .94);
+    }
+
+    .details-card::before,
+    .info-card::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid var(--gold-soft);
+      border-radius: calc(var(--radius) - 10px);
+      pointer-events: none;
     }
 
     .floral-corner {
@@ -258,7 +311,7 @@
       width: 230px;
       height: 230px;
       pointer-events: none;
-      opacity: .9;
+      opacity: .92;
     }
 
     .floral-corner::before,
@@ -268,9 +321,9 @@
       border-radius: 50%;
       background:
         radial-gradient(circle at 35% 35%, #fff 0 12%, #fff8e7 13% 30%, #e6d8bb 31% 32%, transparent 34%),
-        conic-gradient(from 20deg, transparent, rgba(255,255,255,.95), transparent, rgba(255,255,255,.86), transparent);
-      border: 1px solid rgba(192,160,95,.15);
-      box-shadow: 0 12px 26px rgba(79, 94, 72, .12);
+        conic-gradient(from 20deg, transparent, rgba(255,255,255,.96), transparent, rgba(244,226,228,.92), transparent);
+      border: 1px solid rgba(232,192,197,.35);
+      box-shadow: 0 12px 26px rgba(117, 137, 82, .12);
     }
 
     .floral-corner::before { width: 116px; height: 116px; left: 10px; top: 38px; }
@@ -284,9 +337,9 @@
       width: 54px;
       height: 20px;
       border-radius: 80% 0 80% 0;
-      background: linear-gradient(90deg, rgba(125,139,114,.78), rgba(214,224,203,.86));
+      background: linear-gradient(90deg, rgba(117,137,82,.78), rgba(181,196,154,.88));
       transform-origin: center;
-      opacity: .8;
+      opacity: .82;
     }
 
     .floral-corner span { left: 110px; top: 34px; transform: rotate(28deg); }
@@ -299,14 +352,14 @@
     .names {
       font-size: clamp(4.2rem, 9vw, 7.2rem);
       margin: 28px 0 12px;
-      color: var(--sage-dark);
+      color: var(--olive);
     }
 
     .divider {
       width: min(260px, 70%);
       height: 1px;
       margin: 18px auto;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      background: linear-gradient(90deg, transparent, var(--dusty-pink), var(--gold), var(--dusty-pink), transparent);
       position: relative;
     }
 
@@ -316,8 +369,8 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background: var(--paper);
-      color: var(--sage);
+      background: var(--ivory);
+      color: var(--dusty-pink);
       padding: 0 12px;
       font-size: .85rem;
     }
@@ -346,7 +399,7 @@
       align-items: center;
       font-family: "Cinzel", serif;
       letter-spacing: .12em;
-      color: var(--ink);
+      color: var(--soft-ink);
       font-size: clamp(.9rem, 2vw, 1.05rem);
     }
 
@@ -356,10 +409,45 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      border: 1px solid var(--sage);
-      color: var(--sage-dark);
+      border: 1px solid var(--light-olive);
+      color: var(--olive);
       font-size: 1.15rem;
-      background: rgba(220, 227, 213, .45);
+      background: rgba(181, 196, 154, .24);
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid var(--olive);
+      background: var(--olive);
+      color: #fff;
+      border-radius: 999px;
+      padding: 15px 28px;
+      font-family: "Cinzel", serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+      box-shadow: 0 14px 28px rgba(117, 137, 82, .18);
+    }
+
+    .btn:hover { transform: translateY(-2px); background: transparent; color: var(--olive); }
+
+    .btn.secondary { background: var(--pale-pink); color: var(--deep-olive); border-color: var(--dusty-pink); box-shadow: none; }
+    .btn.secondary:hover { background: var(--dusty-pink); color: var(--deep-olive); }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
     }
 
     .info-grid {
@@ -372,6 +460,7 @@
     .info-card {
       padding: 38px 28px;
       text-align: center;
+      background: rgba(246, 247, 236, .86);
     }
 
     .info-card h2 {
@@ -380,7 +469,7 @@
       letter-spacing: .18em;
       text-transform: uppercase;
       font-size: 1rem;
-      color: var(--sage-dark);
+      color: var(--olive);
     }
 
     .info-card p {
@@ -400,15 +489,15 @@
     .timer div {
       padding: 14px 8px;
       border-radius: 16px;
-      background: rgba(220, 227, 213, .5);
-      border: 1px solid rgba(125, 139, 114, .22);
+      background: rgba(181, 196, 154, .28);
+      border: 1px solid rgba(117, 137, 82, .22);
     }
 
     .timer strong {
       display: block;
       font-family: "Cinzel", serif;
       font-size: clamp(1.1rem, 3vw, 1.55rem);
-      color: var(--sage-dark);
+      color: var(--olive);
     }
 
     .timer span {
@@ -418,14 +507,6 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--muted);
-    }
-
-    .actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 24px;
     }
 
     .footer {
@@ -457,16 +538,20 @@
       .floral-corner { width: 170px; height: 170px; opacity: .72; }
       .floral-corner::before { width: 88px; height: 88px; }
       .floral-corner::after { width: 66px; height: 66px; }
+      .tap-text { letter-spacing: .26em; }
     }
   </style>
 </head>
 <body>
-  <div class="cover" id="cover" aria-label="Invitation cover">
-    <div class="cover-card">
-      <div class="eyebrow">Wedding Invitation</div>
-      <h1 class="cover-title">Youssef & Donia</h1>
-      <p class="cover-date">Thursday · 23 July 2026 · 7:00 PM</p>
-      <button class="btn" type="button" id="openInvitation">Open Invitation</button>
+  <div class="cover" id="cover" aria-label="Invitation envelope cover">
+    <div class="envelope-stage">
+      <button class="envelope" type="button" id="openInvitation" aria-label="Tap to open wedding invitation">
+        <span class="envelope-body"></span>
+        <span class="envelope-flap"></span>
+        <span class="wax-seal" aria-hidden="true"></span>
+        <span class="tap-text">TAP TO OPEN</span>
+      </button>
+      <p class="cover-title-small">Youssef & Donia Wedding Invitation</p>
     </div>
   </div>
 
@@ -539,16 +624,19 @@
     const openButton = document.getElementById('openInvitation');
 
     function openInvitation() {
-      cover.classList.add('is-open');
+      cover.classList.add('is-opening');
+      window.setTimeout(() => {
+        cover.classList.add('is-open');
+      }, 850);
       window.setTimeout(() => {
         cover.setAttribute('aria-hidden', 'true');
         document.getElementById('invitation').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 500);
+      }, 1500);
     }
 
     openButton.addEventListener('click', openInvitation);
     document.addEventListener('keydown', (event) => {
-      if ((event.key === 'Enter' || event.key === ' ') && !cover.classList.contains('is-open')) {
+      if ((event.key === 'Enter' || event.key === ' ') && !cover.classList.contains('is-opening')) {
         openInvitation();
       }
     });
@@ -574,7 +662,6 @@
         units.secs.textContent = '00';
         return;
       }
-
       units.days.textContent = pad(Math.floor(distance / 86400000));
       units.hours.textContent = pad(Math.floor((distance % 86400000) / 3600000));
       units.mins.textContent = pad(Math.floor((distance % 3600000) / 60000));
