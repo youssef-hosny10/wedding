@@ -20,12 +20,12 @@
       --pale-pink: #F4E2E4;
       --ivory: #F6F7EC;
       --paper: #fffef8;
-      --line: #5e625b;
       --deep-olive: #263626;
       --soft-ink: #303324;
-      --muted: #6e765e;
+      --muted: #69735e;
       --gold: #bd9452;
-      --shadow: 0 28px 70px rgba(38, 54, 38, 0.18);
+      --soft-gold: rgba(189, 148, 82, .32);
+      --shadow: 0 28px 70px rgba(38, 54, 38, .16);
       --radius: 30px;
     }
 
@@ -37,7 +37,10 @@
       min-height: 100vh;
       font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--soft-ink);
-      background: linear-gradient(135deg, rgba(246,247,236,.98) 0%, rgba(244,226,228,.78) 46%, rgba(237,243,229,.98) 100%);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(232,192,197,.34), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(181,196,154,.42), transparent 32%),
+        linear-gradient(135deg, rgba(246,247,236,.98) 0%, rgba(244,226,228,.72) 46%, rgba(237,243,229,.98) 100%);
       overflow-x: hidden;
     }
 
@@ -49,15 +52,15 @@
       place-items: center;
       padding: 24px;
       min-height: 100dvh;
-      background: linear-gradient(180deg, #fbfaf3 0%, #f3efe6 56%, #eee4dc 100%);
-      transition: opacity .8s ease, visibility .8s ease;
+      background: linear-gradient(180deg, #fbfaf3 0%, #f2eee5 56%, #ede3db 100%);
+      transition: opacity .75s ease, visibility .75s ease;
     }
 
     .cover.is-open {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition-delay: .55s;
+      transition-delay: .45s;
     }
 
     .envelope-stage {
@@ -83,8 +86,8 @@
       inset: 0;
       border-radius: 8px;
       overflow: hidden;
-      background: linear-gradient(145deg, #223529 0%, #304533 100%);
-      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(145deg, #223529 0%, #314835 100%);
+      border: 1px solid rgba(255,255,255,.14);
     }
 
     .envelope-base::before,
@@ -118,7 +121,7 @@
       right: 0;
       top: 0;
       height: 58%;
-      background: linear-gradient(180deg, #304936 0%, #203328 100%);
+      background: linear-gradient(180deg, #334d39 0%, #203328 100%);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
       border-radius: 8px 8px 0 0;
       transform-origin: top center;
@@ -173,7 +176,7 @@
       top: calc(50% + clamp(58px, 10vw, 84px));
       transform: translateX(-50%);
       z-index: 9;
-      color: rgba(255,255,255,.75);
+      color: rgba(255,255,255,.76);
       font-family: "Cinzel", serif;
       letter-spacing: .42em;
       font-size: clamp(.72rem, 2.2vw, 1rem);
@@ -276,9 +279,9 @@
     .invite-card {
       min-height: 780px;
       margin: 0 auto 24px;
-      padding: clamp(92px, 11vw, 132px) clamp(26px, 7vw, 86px);
+      padding: clamp(98px, 12vw, 144px) clamp(30px, 7vw, 92px);
       background: var(--paper);
-      border: 1px solid rgba(96,99,93,.30);
+      border: 1px solid rgba(117,137,82,.24);
       text-align: center;
     }
 
@@ -287,7 +290,7 @@
       content: "";
       position: absolute;
       inset: 18px;
-      border: 1px solid rgba(96,99,93,.22);
+      border: 1px solid rgba(189,148,82,.30);
       border-radius: calc(var(--radius) - 14px);
       pointer-events: none;
       z-index: 1;
@@ -295,18 +298,18 @@
 
     .floral {
       position: absolute;
-      width: clamp(220px, 36vw, 340px);
+      width: clamp(235px, 38vw, 360px);
       height: auto;
-      color: var(--line);
-      opacity: .78;
       z-index: 0;
       pointer-events: none;
+      opacity: .98;
+      filter: drop-shadow(0 8px 14px rgba(117,137,82,.08));
     }
 
-    .floral-tl { left: -26px; top: -28px; }
-    .floral-tr { right: -26px; top: -28px; transform: scaleX(-1); }
-    .floral-bl { left: -30px; bottom: -30px; transform: scaleY(-1); }
-    .floral-br { right: -30px; bottom: -30px; transform: scale(-1); }
+    .floral-tl { left: -42px; top: -40px; }
+    .floral-tr { right: -42px; top: -40px; transform: scaleX(-1); }
+    .floral-bl { left: -44px; bottom: -44px; transform: scaleY(-1); }
+    .floral-br { right: -44px; bottom: -44px; transform: scale(-1); }
 
     .invite-content {
       position: relative;
@@ -434,7 +437,7 @@
     .info-card {
       padding: 42px 30px;
       background: var(--paper);
-      border: 1px solid rgba(96,99,93,.18);
+      border: 1px solid rgba(117,137,82,.16);
       text-align: center;
     }
 
@@ -442,7 +445,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(232,192,197,.18), transparent 45%), linear-gradient(315deg, rgba(181,196,154,.18), transparent 45%);
+      background: linear-gradient(135deg, rgba(232,192,197,.16), transparent 45%), linear-gradient(315deg, rgba(181,196,154,.16), transparent 45%);
       pointer-events: none;
     }
 
@@ -522,15 +525,15 @@
       .hero-card::before { inset: 12px; border-radius: 16px; }
       .hero-title { left: 24px; bottom: 28px; }
       .hero-title .script { font-size: 4.25rem; }
-      .invite-card { min-height: auto; padding: 108px 22px; border-radius: 24px; }
+      .invite-card { min-height: auto; padding: 112px 22px; border-radius: 24px; }
       .invite-card::before { inset: 12px; border-radius: 16px; }
-      .floral { width: 215px; opacity: .72; }
-      .floral-tl { left: -52px; top: -48px; }
-      .floral-tr { right: -52px; top: -48px; }
-      .floral-bl { left: -54px; bottom: -50px; }
-      .floral-br { right: -54px; bottom: -50px; }
-      .section-kicker { font-size: .7rem; letter-spacing: .22em; }
-      .names { font-size: 4.15rem; }
+      .floral { width: 230px; opacity: .92; }
+      .floral-tl { left: -82px; top: -74px; }
+      .floral-tr { right: -82px; top: -74px; }
+      .floral-bl { left: -82px; bottom: -74px; }
+      .floral-br { right: -82px; bottom: -74px; }
+      .section-kicker { font-size: .68rem; letter-spacing: .20em; }
+      .names { font-size: 4.05rem; }
       .detail-list { gap: 16px; margin-top: 34px; }
       .detail-list li { grid-template-columns: 1fr; gap: 4px; text-align: center; letter-spacing: .08em; }
       .actions { gap: 10px; }
@@ -540,6 +543,57 @@
   </style>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute; overflow:hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="flower-corner" viewBox="0 0 320 320">
+        <g opacity=".98">
+          <path d="M26 250C70 196 83 142 143 91C179 61 221 43 294 30" fill="none" stroke="#758952" stroke-width="2.3" stroke-linecap="round" opacity=".72"/>
+          <path d="M34 232C67 216 92 219 116 240C83 260 56 257 34 232Z" fill="#B5C49A" stroke="#758952" stroke-width="1.4" opacity=".76"/>
+          <path d="M78 180C105 172 127 181 144 207C115 220 91 212 78 180Z" fill="#B5C49A" stroke="#758952" stroke-width="1.4" opacity=".72"/>
+          <path d="M119 125C147 119 169 130 184 158C153 168 130 158 119 125Z" fill="#B5C49A" stroke="#758952" stroke-width="1.4" opacity=".7"/>
+          <path d="M180 72C207 74 226 91 237 121C207 123 187 106 180 72Z" fill="#B5C49A" stroke="#758952" stroke-width="1.4" opacity=".72"/>
+          <path d="M218 50C241 35 265 34 291 46C269 70 244 73 218 50Z" fill="#B5C49A" stroke="#758952" stroke-width="1.4" opacity=".7"/>
+        </g>
+
+        <g transform="translate(82 216)">
+          <ellipse rx="34" ry="15" transform="rotate(0)" fill="#fff8ec" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(45)" fill="#fbf1e8" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(90)" fill="#fffaf0" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(135)" fill="#f8ece8" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="22" ry="10" transform="rotate(23)" fill="#ffffff" stroke="#dac9ad" stroke-width="1"/>
+          <ellipse rx="22" ry="10" transform="rotate(113)" fill="#fff7ed" stroke="#dac9ad" stroke-width="1"/>
+          <circle r="10" fill="#d7b96e" stroke="#b58d44" stroke-width="1"/>
+          <circle r="4" fill="#9d7a37" opacity=".55"/>
+        </g>
+
+        <g transform="translate(154 137) scale(.86)">
+          <ellipse rx="34" ry="15" transform="rotate(0)" fill="#fff8ec" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(45)" fill="#fbf1e8" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(90)" fill="#fffaf0" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(135)" fill="#f8ece8" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="20" ry="9" transform="rotate(22)" fill="#fff" stroke="#dac9ad" stroke-width="1"/>
+          <ellipse rx="20" ry="9" transform="rotate(112)" fill="#fff7ed" stroke="#dac9ad" stroke-width="1"/>
+          <circle r="10" fill="#d7b96e" stroke="#b58d44" stroke-width="1"/>
+        </g>
+
+        <g transform="translate(226 69) scale(.7)">
+          <ellipse rx="34" ry="15" transform="rotate(0)" fill="#fff8ec" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(45)" fill="#fbf1e8" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(90)" fill="#fffaf0" stroke="#d6c6a7" stroke-width="1.3"/>
+          <ellipse rx="34" ry="15" transform="rotate(135)" fill="#f8ece8" stroke="#d6c6a7" stroke-width="1.3"/>
+          <circle r="10" fill="#d7b96e" stroke="#b58d44" stroke-width="1"/>
+        </g>
+
+        <g fill="#E8C0C5" stroke="#c9959c" stroke-width="1.2" opacity=".9">
+          <circle cx="42" cy="176" r="10"/>
+          <circle cx="55" cy="164" r="7"/>
+          <circle cx="204" cy="106" r="8"/>
+          <circle cx="253" cy="36" r="7"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
   <div class="cover" id="cover" aria-label="Invitation envelope cover">
     <div class="envelope-stage">
       <button class="envelope" type="button" id="openInvitation" aria-label="Tap to open wedding invitation">
@@ -562,10 +616,10 @@
     </section>
 
     <section class="invite-card" aria-labelledby="wedding-title">
-      <svg class="floral floral-tl" viewBox="0 0 300 300" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 72c52 10 82 38 91 88"/><path d="M69 28c26 31 33 65 15 100"/><path d="M136 18c-4 50-32 78-84 85"/><path d="M19 202c58-18 105-7 140 31"/><path d="M82 276c34-52 80-75 137-62"/><path d="M95 155c17-38 47-52 88-41 8 41-8 71-47 88-33-5-49-21-41-47z"/><path d="M107 154c23 8 45 19 66 34"/><path d="M132 119c-7 27-7 53 1 78"/><path d="M32 79c26 0 47 12 63 35-28 9-52 2-70-22z"/><path d="M70 31c25 9 40 27 45 54-28-2-48-17-57-44z"/><path d="M134 20c7 28-4 51-30 67-13-26-11-49 6-69z"/><path d="M20 203c25-12 49-10 72 6-20 21-44 28-72 18z"/><path d="M82 275c10-27 30-44 60-48 0 31-15 54-44 65z"/><path d="M190 70c30-28 62-38 96-31"/><path d="M205 93c28-12 55-10 81 8"/><path d="M217 70c13-23 34-35 61-35 1 28-13 49-40 62z"/></svg>
-      <svg class="floral floral-tr" viewBox="0 0 300 300" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 72c52 10 82 38 91 88"/><path d="M69 28c26 31 33 65 15 100"/><path d="M136 18c-4 50-32 78-84 85"/><path d="M19 202c58-18 105-7 140 31"/><path d="M82 276c34-52 80-75 137-62"/><path d="M95 155c17-38 47-52 88-41 8 41-8 71-47 88-33-5-49-21-41-47z"/><path d="M107 154c23 8 45 19 66 34"/><path d="M132 119c-7 27-7 53 1 78"/><path d="M32 79c26 0 47 12 63 35-28 9-52 2-70-22z"/><path d="M70 31c25 9 40 27 45 54-28-2-48-17-57-44z"/><path d="M134 20c7 28-4 51-30 67-13-26-11-49 6-69z"/><path d="M20 203c25-12 49-10 72 6-20 21-44 28-72 18z"/><path d="M82 275c10-27 30-44 60-48 0 31-15 54-44 65z"/><path d="M190 70c30-28 62-38 96-31"/><path d="M205 93c28-12 55-10 81 8"/><path d="M217 70c13-23 34-35 61-35 1 28-13 49-40 62z"/></svg>
-      <svg class="floral floral-bl" viewBox="0 0 300 300" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 72c52 10 82 38 91 88"/><path d="M69 28c26 31 33 65 15 100"/><path d="M136 18c-4 50-32 78-84 85"/><path d="M19 202c58-18 105-7 140 31"/><path d="M82 276c34-52 80-75 137-62"/><path d="M95 155c17-38 47-52 88-41 8 41-8 71-47 88-33-5-49-21-41-47z"/><path d="M107 154c23 8 45 19 66 34"/><path d="M132 119c-7 27-7 53 1 78"/><path d="M32 79c26 0 47 12 63 35-28 9-52 2-70-22z"/><path d="M70 31c25 9 40 27 45 54-28-2-48-17-57-44z"/><path d="M134 20c7 28-4 51-30 67-13-26-11-49 6-69z"/><path d="M20 203c25-12 49-10 72 6-20 21-44 28-72 18z"/><path d="M82 275c10-27 30-44 60-48 0 31-15 54-44 65z"/><path d="M190 70c30-28 62-38 96-31"/><path d="M205 93c28-12 55-10 81 8"/><path d="M217 70c13-23 34-35 61-35 1 28-13 49-40 62z"/></svg>
-      <svg class="floral floral-br" viewBox="0 0 300 300" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 72c52 10 82 38 91 88"/><path d="M69 28c26 31 33 65 15 100"/><path d="M136 18c-4 50-32 78-84 85"/><path d="M19 202c58-18 105-7 140 31"/><path d="M82 276c34-52 80-75 137-62"/><path d="M95 155c17-38 47-52 88-41 8 41-8 71-47 88-33-5-49-21-41-47z"/><path d="M107 154c23 8 45 19 66 34"/><path d="M132 119c-7 27-7 53 1 78"/><path d="M32 79c26 0 47 12 63 35-28 9-52 2-70-22z"/><path d="M70 31c25 9 40 27 45 54-28-2-48-17-57-44z"/><path d="M134 20c7 28-4 51-30 67-13-26-11-49 6-69z"/><path d="M20 203c25-12 49-10 72 6-20 21-44 28-72 18z"/><path d="M82 275c10-27 30-44 60-48 0 31-15 54-44 65z"/><path d="M190 70c30-28 62-38 96-31"/><path d="M205 93c28-12 55-10 81 8"/><path d="M217 70c13-23 34-35 61-35 1 28-13 49-40 62z"/></svg>
+      <svg class="floral floral-tl" viewBox="0 0 320 320" aria-hidden="true"><use href="#flower-corner"></use></svg>
+      <svg class="floral floral-tr" viewBox="0 0 320 320" aria-hidden="true"><use href="#flower-corner"></use></svg>
+      <svg class="floral floral-bl" viewBox="0 0 320 320" aria-hidden="true"><use href="#flower-corner"></use></svg>
+      <svg class="floral floral-br" viewBox="0 0 320 320" aria-hidden="true"><use href="#flower-corner"></use></svg>
 
       <div class="invite-content">
         <p class="section-kicker">Together with their families</p>
@@ -625,11 +679,11 @@
       window.setTimeout(() => {
         invitation.classList.add('is-visible');
         cover.classList.add('is-open');
-      }, 900);
+      }, 850);
       window.setTimeout(() => {
         cover.setAttribute('aria-hidden', 'true');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 1300);
+      }, 1250);
     }
 
     openButton.addEventListener('click', openInvitation);
