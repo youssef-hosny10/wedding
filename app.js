@@ -5,17 +5,51 @@ const h = React.createElement;
 const RSVP_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdj2nV5WhxTD3rOfWgEqQSYA3llViY_ETFsgMb74E9EtYpRjA/viewform';
 const MAP_URL = 'https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw';
 const WEDDING_TIME = new Date('2026-07-23T19:00:00+03:00').getTime();
-const ENVELOPE_KEY = 'yd-envelope-v4-opened';
+const ENVELOPE_KEY = 'yd-envelope-v5-opened';
+
+const baseButtonStyle = {
+  appearance: 'none',
+  WebkitAppearance: 'none',
+  boxSizing: 'border-box',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minWidth: '170px',
+  minHeight: '54px',
+  padding: '15px 30px',
+  borderRadius: '999px',
+  fontFamily: 'Cinzel, serif',
+  fontSize: '12px',
+  fontWeight: 700,
+  letterSpacing: '0.18em',
+  textTransform: 'uppercase',
+  textAlign: 'center',
+  textDecoration: 'none',
+  lineHeight: 1,
+  transition: 'transform .22s ease, box-shadow .22s ease, background .22s ease, color .22s ease'
+};
+const filledButtonStyle = {
+  ...baseButtonStyle,
+  color: '#fffef8',
+  background: 'linear-gradient(135deg, #758952 0%, #607340 100%)',
+  border: '1px solid #758952',
+  boxShadow: '0 16px 32px rgba(117,137,82,.24), inset 0 1px 0 rgba(255,255,255,.18)'
+};
+const outlineButtonStyle = {
+  ...baseButtonStyle,
+  color: '#A67636',
+  background: 'rgba(255,254,248,.82)',
+  border: '1.5px solid #BD9452',
+  boxShadow: '0 14px 28px rgba(189,148,82,.16)'
+};
 
 function Floral() {
-  const leaves = ['#d9e1c9', '#b5c49a', '#8ea36b', '#758952'];
-  const flowers = [[95,236,52,'#f9f5ee'],[138,188,60,'#f7f1ea'],[196,142,56,'#E8C0C5'],[236,102,48,'#F4E2E4'],[72,276,42,'#E8C0C5']];
   return h('svg', { viewBox: '0 0 360 360', className: 'floral', 'aria-hidden': 'true' },
     h('g', { opacity: '.95' },
-      leaves.map((color, index) => h('ellipse', { key: index, cx: 128 + index * 34, cy: 92 + index * 26, rx: 14 + index * 3, ry: 50 - index * 3, fill: color, opacity: .48, transform: `rotate(${120 + index * 18} ${128 + index * 34} ${92 + index * 26})` })),
+      ['#d9e1c9', '#b5c49a', '#8ea36b', '#758952'].map((color, index) => h('ellipse', { key: index, cx: 128 + index * 34, cy: 92 + index * 26, rx: 14 + index * 3, ry: 50 - index * 3, fill: color, opacity: .48, transform: `rotate(${120 + index * 18} ${128 + index * 34} ${92 + index * 26})` })),
       h('path', { d: 'M55 280 C115 196 150 154 298 74', fill: 'none', stroke: '#758952', strokeWidth: '3', strokeLinecap: 'round', opacity: '.42' }),
       h('path', { d: 'M76 300 C130 226 184 166 320 102', fill: 'none', stroke: '#B5C49A', strokeWidth: '2', strokeLinecap: 'round', opacity: '.52' }),
-      flowers.map(([cx, cy, r, color], i) => h('g', { key: i, transform: `translate(${cx} ${cy})` },
+      [[95,236,52,'#f9f5ee'],[138,188,60,'#f7f1ea'],[196,142,56,'#E8C0C5'],[236,102,48,'#F4E2E4'],[72,276,42,'#E8C0C5']].map(([cx, cy, r, color], i) => h('g', { key: i, transform: `translate(${cx} ${cy})` },
         Array.from({ length: 9 }).map((_, p) => h('ellipse', { key: p, cx: 0, cy: -r * .28, rx: r * .22, ry: r * .43, fill: color, opacity: p % 2 ? .82 : .96, transform: `rotate(${p * 40})` })),
         h('circle', { r: r * .18, fill: '#BD9452', opacity: '.42' })
       ))
@@ -54,26 +88,20 @@ function useCountdown() {
     return [['Days', days], ['Hours', hours], ['Minutes', minutes], ['Seconds', seconds]].map(([label, value]) => ({ label, value: remaining === null ? '--' : String(value).padStart(2, '0') }));
   }, [remaining]);
 }
-
 function CountdownStrip() {
-  const parts = useCountdown();
   const children = [];
-  parts.forEach((part, index) => {
+  useCountdown().forEach((part, index) => {
     children.push(h('div', { key: part.label, className: 'count-unit' }, h('span', { className: 'count-number' }, part.value), h('span', { className: 'count-label' }, part.label)));
-    if (index < parts.length - 1) children.push(h('div', { key: `sparkle-${part.label}`, className: 'count-sparkle', 'aria-hidden': 'true' }, '✦'));
+    if (index < 3) children.push(h('div', { key: `sparkle-${part.label}`, className: 'count-sparkle', 'aria-hidden': 'true' }, '✦'));
   });
   return h('div', { className: 'countdown-strip' }, children);
 }
-
 function CountdownPanel() {
   return h('section', { className: 'countdown-panel', 'aria-labelledby': 'countdown-title' }, h('h2', { id: 'countdown-title', className: 'countdown-heading' }, 'Countdown'), h('p', { className: 'countdown-subtitle' }, 'To the big day'), h(CountdownStrip));
 }
-
 function ExternalButton({ href, children, variant = 'filled' }) {
-  const buttonClass = variant === 'filled' ? 'luxury-btn' : 'luxury-btn-outline';
-  return h('a', { href, target: '_blank', rel: 'noopener noreferrer', className: `btn-focus luxury-link ${buttonClass}` }, children);
+  return h('a', { href, target: '_blank', rel: 'noopener noreferrer', style: variant === 'filled' ? filledButtonStyle : outlineButtonStyle }, children);
 }
-
 function DetailCard({ title, subtitle, text, children }) {
   return h('article', { className: 'rounded-[1.7rem] border border-wedding-gold/25 bg-white/65 p-6 text-center shadow-soft backdrop-blur sm:p-7' },
     h('p', { className: 'font-serif text-[.68rem] font-semibold uppercase tracking-[.28em] text-wedding-ink' }, subtitle),
@@ -82,7 +110,6 @@ function DetailCard({ title, subtitle, text, children }) {
     h('div', { className: 'mt-6 flex justify-center' }, children)
   );
 }
-
 function InvitationCard() {
   const details = [['Date', 'Thursday, 23 July 2026'], ['Time', '7:00 PM'], ['Venue', 'Ziya by Azha']];
   return h('section', { className: 'paper-line relative mb-6 overflow-hidden rounded-[1.8rem] border border-wedding-gold/60 bg-[#fffef8] px-7 py-28 text-center shadow-luxury sm:px-16 sm:py-36' },
@@ -97,24 +124,21 @@ function InvitationCard() {
     )
   );
 }
-
 function Hero() {
   return h('section', { className: 'hero-photo mb-6 p-7 sm:p-12', 'aria-label': 'Wedding hero photo' },
     h('div', { className: 'relative z-10 max-w-2xl pb-3 text-white drop-shadow-[0_8px_18px_rgba(0,0,0,.38)]' }, h('p', { className: 'font-serif text-xs font-semibold uppercase tracking-[.38em]' }, 'The Wedding of'), h('h1', { className: 'script-name mt-4 text-[5.1rem] leading-[.86] sm:text-[7.4rem] lg:text-[8.8rem]' }, 'Youssef & Donia'))
   );
 }
-
 function Details() {
   return h(React.Fragment, null,
     h('section', { className: 'details-intro', 'aria-labelledby': 'details-title' }, h('h2', { id: 'details-title', className: 'day-heading' }, 'Day Details'), h('p', { className: 'day-subtitle' }, 'Everything you need to know')),
     h('section', { className: 'mb-6 grid gap-4 lg:grid-cols-3' },
       h(DetailCard, { title: 'Wedding Day', subtitle: 'When', text: 'Thursday, 23 July 2026 at 7:00 PM. Please arrive a little early so the evening can begin beautifully.' }, h(ExternalButton, { href: RSVP_URL }, 'Confirm')),
-      h(DetailCard, { title: 'Ziya by Azha', subtitle: 'Venue', text: '' }, h(ExternalButton, { href: MAP_URL, variant: 'outline' }, 'Open Map')),
+      h(DetailCard, { title: 'Ziya by Azha', subtitle: 'Venue', text: 'Ceremony and celebration will take place at the same venue.' }, h(ExternalButton, { href: MAP_URL, variant: 'outline' }, 'Open Map')),
       h(DetailCard, { title: 'RSVP', subtitle: 'Response', text: 'Responses are saved in Google Forms so we can prepare your place with love.' }, h(ExternalButton, { href: RSVP_URL }, 'Open RSVP'))
     )
   );
 }
-
 function App() {
   const [showEnvelope, setShowEnvelope] = useState(false);
   useEffect(() => { setShowEnvelope(sessionStorage.getItem(ENVELOPE_KEY) !== 'true'); }, []);
@@ -123,5 +147,4 @@ function App() {
     h('main', { className: 'page-shell' }, h(Hero), h(InvitationCard), h(CountdownPanel), h(Details), h('aside', { className: 'mb-8 rounded-full border border-wedding-dustyPink/70 bg-wedding-palePink/80 px-6 py-5 text-center text-sm leading-7 text-wedding-ink/75 shadow-soft sm:text-base' }, "We adore your children, but for one night we'd like to see what you all look like without them. Adults only, please. 🤍"), h('footer', { className: 'pb-5 text-center' }, h('p', { className: 'script-name text-5xl text-wedding-olive' }, 'Youssef & Donia'), h('p', { className: 'mt-2 font-serif text-xs uppercase tracking-[.28em] text-wedding-ink/55' }, '23.07.2026')))
   );
 }
-
 createRoot(document.getElementById('root')).render(h(App));
