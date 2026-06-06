@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <filter id="paperNoise"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0.25"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.09"/></feComponentTransfer></filter>
+    <filter id="emboss" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="blur"/><feOffset in="blur" dx="3" dy="4" result="dark"/><feOffset in="blur" dx="-2" dy="-2" result="light"/><feFlood flood-color="#172015" flood-opacity="0.45" result="darkColor"/><feFlood flood-color="#e6ead8" flood-opacity="0.38" result="lightColor"/><feComposite in="darkColor" in2="dark" operator="in" result="darkEmboss"/><feComposite in="lightColor" in2="light" operator="in" result="lightEmboss"/><feMerge><feMergeNode in="darkEmboss"/><feMergeNode in="lightEmboss"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="seal" cx="34%" cy="28%" r="72%"><stop offset="0" stop-color="#edd6ad"/><stop offset="0.18" stop-color="#d7b374"/><stop offset="0.52" stop-color="#b8894c"/><stop offset="0.82" stop-color="#7d542d"/><stop offset="1" stop-color="#5e3d21"/></radialGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#667056"/><stop offset="0.46" stop-color="#4d593f"/><stop offset="1" stop-color="#2d392b"/></linearGradient>
+    <linearGradient id="flap" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#69745b"/><stop offset="0.62" stop-color="#4e5b42"/><stop offset="1" stop-color="#303c2e"/></linearGradient>
+    <pattern id="florals" width="360" height="360" patternUnits="userSpaceOnUse">
+      <g filter="url(#emboss)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g stroke="#cfd8c4" stroke-width="4" opacity="0.48"><path d="M62 142c36-32 75-35 106-8-34 12-61 31-84 65-2-24-10-42-22-57Z"/><path d="M88 192c10-53 38-84 83-92-4 49-28 84-77 108"/><path d="M214 78c24 39 24 76-2 109-21-38-23-75 2-109Z"/><path d="M265 120c41 14 63 45 67 88-46-2-77-25-95-68"/><path d="M240 205c49-26 91-22 125 11-41 24-82 21-125-11Z"/><path d="M80 287c41-46 92-60 149-36-47 44-98 58-149 36Z"/><circle cx="64" cy="232" r="7"/><circle cx="310" cy="92" r="5"/></g>
+        <g stroke="#1c271b" stroke-width="4" opacity="0.34" transform="translate(5 5)"><path d="M62 142c36-32 75-35 106-8-34 12-61 31-84 65-2-24-10-42-22-57Z"/><path d="M88 192c10-53 38-84 83-92-4 49-28 84-77 108"/><path d="M214 78c24 39 24 76-2 109-21-38-23-75 2-109Z"/><path d="M265 120c41 14 63 45 67 88-46-2-77-25-95-68"/><path d="M240 205c49-26 91-22 125 11-41 24-82 21-125-11Z"/><path d="M80 287c41-46 92-60 149-36-47 44-98 58-149 36Z"/><circle cx="64" cy="232" r="7"/><circle cx="310" cy="92" r="5"/></g>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1800" fill="#3f4a38"/>
+  <rect width="1200" height="1800" fill="url(#paper)"/>
+  <rect width="1200" height="1800" filter="url(#paperNoise)" opacity="0.85"/>
+  <rect width="1200" height="1800" fill="url(#florals)" opacity="0.74"/>
+  <path d="M-110 370 L600 940 L1310 370 L1310 1810 L-110 1810 Z" fill="#3f4b39" opacity="0.52"/>
+  <path d="M-80 1810 L600 860 L1280 1810 Z" fill="#56634d" opacity="0.74"/>
+  <path d="M-110 0 H1310 L600 865 Z" fill="url(#flap)" opacity="0.98"/>
+  <path d="M-80 1810 L600 860 L1280 1810" fill="none" stroke="#e9e0bf" stroke-opacity="0.2" stroke-width="3"/>
+  <path d="M-110 370 L600 940 L1310 370" fill="none" stroke="#121b12" stroke-opacity="0.24" stroke-width="3"/>
+  <g transform="translate(600 910)">
+    <circle r="145" fill="url(#seal)"/>
+    <circle r="123" fill="none" stroke="#fff2d1" stroke-opacity="0.45" stroke-width="5"/>
+    <circle r="78" fill="none" stroke="#fff2d1" stroke-opacity="0.23" stroke-width="3"/>
+    <circle r="145" fill="none" stroke="#fff6de" stroke-opacity="0.28" stroke-width="3"/>
+    <text y="28" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-size="84" fill="#fff7dc" fill-opacity="0.72" letter-spacing="-10">Y&amp;D</text>
+  </g>
+  <text x="600" y="1010" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-size="27" fill="#fff" fill-opacity="0.75" letter-spacing="18">TAP TO OPEN</text>
+  <rect width="1200" height="1800" fill="none" stroke="#fff" stroke-opacity="0.08" stroke-width="2"/>
+</svg>
