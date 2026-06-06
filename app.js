@@ -6,6 +6,7 @@ const h = React.createElement;
 const RSVP_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdj2nV5WhxTD3rOfWgEqQSYA3llViY_ETFsgMb74E9EtYpRjA/viewform';
 const MAP_URL = 'https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw';
 const WEDDING_TIME = new Date('2026-07-23T19:00:00+03:00').getTime();
+const ENVELOPE_KEY = 'yd-envelope-v2-opened';
 
 function Floral() {
   const leaves = ['#d9e1c9', '#b5c49a', '#8ea36b', '#758952'];
@@ -54,7 +55,7 @@ function Envelope({ onDone }) {
   function openEnvelope() {
     if (opening) return;
     setOpening(true);
-    sessionStorage.setItem('yd-envelope-opened', 'true');
+    sessionStorage.setItem(ENVELOPE_KEY, 'true');
     window.setTimeout(onDone, 1550);
   }
 
@@ -223,7 +224,7 @@ function App() {
   const [showEnvelope, setShowEnvelope] = useState(false);
 
   useEffect(() => {
-    setShowEnvelope(sessionStorage.getItem('yd-envelope-opened') !== 'true');
+    setShowEnvelope(sessionStorage.getItem(ENVELOPE_KEY) !== 'true');
   }, []);
 
   return h(React.Fragment, null,
