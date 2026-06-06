@@ -10,10 +10,12 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="portrait5.png" />
     <title>Youssef & Donia | Wedding Invitation</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preload" as="image" href="portrait5.png" />
+
     <script>
       tailwind.config = {
         theme: {
@@ -26,7 +28,7 @@
                 palePink: '#F4E2E4',
                 ivory: '#F6F7EC',
                 gold: '#BD9452',
-                envelope: '#223328',
+                envelope: '#293523',
                 ink: '#20261c'
               }
             },
@@ -38,225 +40,16 @@
             boxShadow: {
               luxury: '0 30px 80px rgba(32, 38, 28, .16)',
               soft: '0 18px 48px rgba(117, 137, 82, .15)'
-            },
-            keyframes: {
-              float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
-              fadeUp: { '0%': { opacity: 0, transform: 'translateY(20px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
-              shimmer: { '0%': { backgroundPosition: '0% 50%' }, '100%': { backgroundPosition: '100% 50%' } }
-            },
-            animation: {
-              float: 'float 5s ease-in-out infinite',
-              fadeUp: 'fadeUp .8s ease both',
-              shimmer: 'shimmer 6s ease-in-out infinite alternate'
             }
           }
         }
       };
     </script>
-    <style>
-      :root {
-        --olive: #758952;
-        --light-olive: #B5C49A;
-        --dusty-pink: #E8C0C5;
-        --pale-pink: #F4E2E4;
-        --ivory: #F6F7EC;
-        --gold: #BD9452;
-        --envelope: #223328;
-        --ink: #20261c;
-      }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        min-height: 100dvh;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 12% 5%, rgba(232,192,197,.42), transparent 28%),
-          radial-gradient(circle at 88% 10%, rgba(181,196,154,.44), transparent 30%),
-          linear-gradient(135deg, #fbfbf1 0%, #f6f7ec 36%, #f4e2e4 100%);
-        overflow-x: hidden;
-      }
-      .grain::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        opacity: .12;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
-      }
-      .envelope-cover {
-        position: fixed;
-        inset: 0;
-        z-index: 50;
-        min-height: 100dvh;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-        background: linear-gradient(180deg, #fbfbf1, #f6f7ec 58%, #f4e2e4);
-        transition: opacity .75s ease .35s, visibility .75s ease .35s;
-      }
-      .envelope-cover.opened { opacity: 0; visibility: hidden; pointer-events: none; }
-      .envelope-wrap { width: min(88vw, 560px); text-align: center; perspective: 1200px; }
-      .envelope-button { position: relative; width: 100%; aspect-ratio: 1.55/1; border: 0; background: transparent; cursor: pointer; padding: 0; filter: drop-shadow(0 30px 36px rgba(32,51,40,.24)); }
-      .env-body { position: absolute; inset: 0; border-radius: 10px; background: linear-gradient(140deg, #1f3228, #314b37); overflow: hidden; border: 1px solid rgba(255,255,255,.14); }
-      .env-body::before, .env-body::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.055); }
-      .env-body::before { clip-path: polygon(0 0, 50% 52%, 0 100%); }
-      .env-body::after { clip-path: polygon(100% 0, 50% 52%, 100% 100%); }
-      .env-pocket { position: absolute; inset: auto 0 0; height: 63%; background: linear-gradient(180deg, #304733, #1f3228); clip-path: polygon(0 100%, 50% 0, 100% 100%); z-index: 3; }
-      .env-flap { position: absolute; inset: 0 0 auto; height: 58%; z-index: 5; background: linear-gradient(180deg, #38543e, #203328); clip-path: polygon(0 0, 100% 0, 50% 100%); border-radius: 10px 10px 0 0; transform-origin: top center; transition: transform 1s cubic-bezier(.22,.74,.18,1.02); }
-      .opening .env-flap { transform: rotateX(180deg); }
-      .seal { position: absolute; left: 50%; top: 51%; z-index: 8; width: clamp(76px, 15vw, 114px); height: clamp(76px, 15vw, 114px); transform: translate(-50%,-50%); border-radius: 999px; display: grid; place-items: center; color: #fff8e7; font-family: Great Vibes, cursive; font-size: clamp(2rem, 6vw, 3.3rem); background: radial-gradient(circle at 34% 28%, rgba(255,255,255,.55), transparent 17%), radial-gradient(circle, #d8ad67 0 44%, #b57d3e 70%, #7c4c22 100%); border: 2px solid rgba(255,255,255,.44); box-shadow: inset 0 8px 16px rgba(255,255,255,.24), inset 0 -9px 20px rgba(65,34,10,.42), 0 12px 24px rgba(0,0,0,.24); transition: .45s ease; }
-      .seal span { width: 68%; height: 68%; border: 1px solid rgba(255,255,255,.62); border-radius: 999px; display: grid; place-items: center; }
-      .opening .seal { opacity: 0; transform: translate(-50%,-50%) scale(.72); }
-      .tap-open { position: absolute; left: 50%; top: calc(50% + clamp(68px, 13vw, 92px)); z-index: 9; transform: translateX(-50%); color: rgba(255,255,255,.78); font-family: Cinzel, serif; font-weight: 600; letter-spacing: .38em; font-size: clamp(.68rem, 2vw, .9rem); white-space: nowrap; transition: opacity .3s ease; }
-      .opening .tap-open { opacity: 0; }
-      .floral { position: absolute; width: clamp(210px, 39vw, 350px); pointer-events: none; z-index: 0; opacity: .95; filter: drop-shadow(0 10px 12px rgba(117,137,82,.08)); }
-      .floral-tl { left: -62px; top: -58px; }
-      .floral-br { right: -62px; bottom: -58px; transform: rotate(180deg); }
-      .paper-line::before { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(117,137,82,.34); border-radius: 1.35rem; pointer-events: none; z-index: 1; }
-      .hero-photo { background-image: linear-gradient(to bottom, rgba(32,38,28,.08), rgba(32,38,28,.65)), url('portrait5.png'); background-position: center 34%; background-size: cover; }
-      .hero-photo::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(246,247,236,.68); border-radius: 1.4rem; pointer-events: none; }
-      .btn-focus:focus-visible { outline: 3px solid rgba(189,148,82,.45); outline-offset: 4px; }
-      @media (max-width: 430px) {
-        .floral { width: 215px; opacity: .82; }
-        .floral-tl { left: -72px; top: -70px; }
-        .floral-br { right: -76px; bottom: -72px; }
-      }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="grain font-sans">
     <div id="root"></div>
-    <script type="module">
-      import React, { useEffect, useMemo, useState } from 'https://esm.sh/react@18.3.1';
-      import { createRoot } from 'https://esm.sh/react-dom@18.3.1/client';
-
-      const RSVP_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdj2nV5WhxTD3rOfWgEqQSYA3llViY_ETFsgMb74E9EtYpRjA/viewform';
-      const MAP_URL = 'https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw';
-      const WEDDING_TIME = new Date('2026-07-23T19:00:00+03:00').getTime();
-
-      function Floral() {
-        return React.createElement('svg', { viewBox: '0 0 360 360', className: 'floral', 'aria-hidden': 'true' },
-          React.createElement('g', { opacity: '.95' },
-            ['#d9e1c9','#b5c49a','#8ea36b','#758952'].map((c, i) => React.createElement('ellipse', { key: 'l'+i, cx: 128+i*34, cy: 92+i*26, rx: 14+i*3, ry: 50-i*3, fill: c, opacity: .48, transform: `rotate(${120+i*18} ${128+i*34} ${92+i*26})` })),
-            React.createElement('path', { d: 'M55 280 C115 196 150 154 298 74', fill: 'none', stroke: '#758952', strokeWidth: '3', strokeLinecap: 'round', opacity: '.42' }),
-            React.createElement('path', { d: 'M76 300 C130 226 184 166 320 102', fill: 'none', stroke: '#B5C49A', strokeWidth: '2', strokeLinecap: 'round', opacity: '.52' }),
-            [[95,236,52,'#f9f5ee'],[138,188,60,'#f7f1ea'],[196,142,56,'#E8C0C5'],[236,102,48,'#F4E2E4'],[72,276,42,'#E8C0C5']].map(([cx,cy,r,c], i) =>
-              React.createElement('g', { key: i, transform: `translate(${cx} ${cy})` },
-                Array.from({length: 9}).map((_, p) => React.createElement('ellipse', { key: p, cx: 0, cy: -r*.28, rx: r*.22, ry: r*.43, fill: c, opacity: p % 2 ? .82 : .96, transform: `rotate(${p*40})` })),
-                React.createElement('circle', { r: r*.18, fill: '#BD9452', opacity: '.42' })
-              )
-            )
-          )
-        );
-      }
-
-      function Envelope({ onDone }) {
-        const [opening, setOpening] = useState(false);
-        const open = () => {
-          setOpening(true);
-          sessionStorage.setItem('yd-envelope-opened', 'true');
-          setTimeout(onDone, 1200);
-        };
-        return React.createElement('div', { className: `envelope-cover ${opening ? 'opening opened' : ''}` },
-          React.createElement('div', { className: 'envelope-wrap animate-float' },
-            React.createElement('button', { type: 'button', onClick: open, className: 'envelope-button btn-focus', 'aria-label': 'Open wedding invitation' },
-              React.createElement('span', { className: 'env-body' }),
-              React.createElement('span', { className: 'env-pocket' }),
-              React.createElement('span', { className: 'env-flap' }),
-              React.createElement('span', { className: 'seal' }, React.createElement('span', null, 'Y&D')),
-              React.createElement('span', { className: 'tap-open' }, 'TAP TO OPEN')
-            ),
-            React.createElement('p', { className: 'mt-8 font-serif text-xs font-semibold uppercase tracking-[.34em] text-wedding-envelope' }, 'Youssef & Donia')
-          )
-        );
-      }
-
-      function Countdown() {
-        const [remaining, setRemaining] = useState(null);
-        useEffect(() => {
-          const tick = () => setRemaining(Math.max(0, WEDDING_TIME - Date.now()));
-          tick();
-          const id = setInterval(tick, 1000);
-          return () => clearInterval(id);
-        }, []);
-        const parts = useMemo(() => {
-          const value = remaining ?? 0;
-          const days = Math.floor(value / 86400000);
-          const hours = Math.floor((value % 86400000) / 3600000);
-          const minutes = Math.floor((value % 3600000) / 60000);
-          const seconds = Math.floor((value % 60000) / 1000);
-          return [['Days', days], ['Hrs', hours], ['Min', minutes], ['Sec', seconds]];
-        }, [remaining]);
-        return React.createElement('div', { className: 'grid grid-cols-4 gap-2 sm:gap-3' },
-          parts.map(([label, value]) => React.createElement('div', { key: label, className: 'rounded-2xl border border-wedding-gold/30 bg-white/60 p-3 text-center shadow-sm' },
-            React.createElement('div', { className: 'font-serif text-2xl font-semibold text-wedding-olive sm:text-3xl' }, remaining === null ? '--' : String(value).padStart(2, '0')),
-            React.createElement('div', { className: 'mt-1 font-serif text-[.62rem] uppercase tracking-[.22em] text-wedding-ink/60' }, label)
-          ))
-        );
-      }
-
-      function InfoCard({ title, text, children }) {
-        return React.createElement('article', { className: 'rounded-[1.7rem] border border-wedding-gold/25 bg-white/55 p-6 shadow-soft backdrop-blur' },
-          React.createElement('h3', { className: 'font-serif text-lg font-semibold uppercase tracking-[.18em] text-wedding-olive' }, title),
-          React.createElement('p', { className: 'mt-3 min-h-16 text-sm leading-7 text-wedding-ink/70' }, text),
-          React.createElement('div', { className: 'mt-5' }, children)
-        );
-      }
-
-      function ExternalButton({ href, children, variant = 'filled' }) {
-        const cls = variant === 'filled'
-          ? 'border-wedding-olive bg-wedding-olive text-white hover:bg-wedding-envelope'
-          : 'border-wedding-gold bg-transparent text-wedding-gold hover:bg-wedding-gold hover:text-white';
-        return React.createElement('a', { href, target: '_blank', rel: 'noopener noreferrer', className: `btn-focus inline-flex min-h-12 min-w-40 items-center justify-center rounded-full border px-6 py-3 text-center font-serif text-xs font-semibold uppercase tracking-[.18em] transition hover:-translate-y-0.5 hover:shadow-soft ${cls}` }, children);
-      }
-
-      function App() {
-        const [showEnvelope, setShowEnvelope] = useState(false);
-        useEffect(() => { setShowEnvelope(sessionStorage.getItem('yd-envelope-opened') !== 'true'); }, []);
-        return React.createElement(React.Fragment, null,
-          showEnvelope && React.createElement(Envelope, { onDone: () => setShowEnvelope(false) }),
-          React.createElement('main', { className: 'mx-auto w-[min(960px,calc(100%-28px))] px-0 py-7 sm:py-12 lg:py-16' },
-            React.createElement('section', { className: 'hero-photo relative mb-6 flex min-h-[78dvh] items-end overflow-hidden rounded-[1.8rem] border border-wedding-gold/30 p-7 shadow-luxury sm:p-12' },
-              React.createElement('div', { className: 'relative z-10 max-w-2xl pb-3 text-white drop-shadow-[0_8px_18px_rgba(0,0,0,.38)] animate-fadeUp' },
-                React.createElement('p', { className: 'font-serif text-xs font-semibold uppercase tracking-[.38em]' }, 'The Wedding of'),
-                React.createElement('h1', { className: 'mt-4 font-script text-[4.7rem] leading-[.86] sm:text-[7rem] lg:text-[8.4rem]' }, 'Youssef & Donia')
-              )
-            ),
-            React.createElement('section', { className: 'paper-line relative mb-6 overflow-hidden rounded-[1.8rem] border border-wedding-gold/60 bg-[#fffef8] px-7 py-28 text-center shadow-luxury sm:px-16 sm:py-36' },
-              React.createElement('div', { className: 'floral-tl' }, React.createElement(Floral)),
-              React.createElement('div', { className: 'floral-br' }, React.createElement(Floral)),
-              React.createElement('div', { className: 'relative z-10 mx-auto max-w-2xl' },
-                React.createElement('p', { className: 'font-serif text-xs font-semibold uppercase tracking-[.3em] text-wedding-olive' }, 'Together with their families'),
-                React.createElement('h2', { className: 'my-7 font-script text-[4.2rem] leading-[.9] text-wedding-olive sm:text-[7rem]' }, 'Youssef & Donia'),
-                React.createElement('p', { className: 'mx-auto max-w-xl text-base leading-8 text-wedding-ink/70 sm:text-lg' }, 'request the pleasure of your company as they celebrate their wedding day.'),
-                React.createElement('div', { className: 'mx-auto my-8 h-px w-64 max-w-[70%] bg-gradient-to-r from-transparent via-wedding-gold to-transparent' }),
-                React.createElement('dl', { className: 'mx-auto grid max-w-lg gap-5 text-left' },
-                  [['Date', 'Thursday, 23 July 2026'], ['Time', '7:00 PM'], ['Venue', 'Ziya by Azha']].map(([label, value]) => React.createElement('div', { key: label, className: 'grid grid-cols-[80px_1fr] gap-4 font-serif text-sm uppercase tracking-[.12em] text-wedding-ink sm:text-base' },
-                    React.createElement('dt', { className: 'text-xs font-semibold tracking-[.2em] text-wedding-olive' }, label),
-                    React.createElement('dd', { className: 'm-0' }, value)
-                  ))
-                ),
-                React.createElement('div', { className: 'mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row' },
-                  React.createElement(ExternalButton, { href: RSVP_URL }, 'RSVP Now'),
-                  React.createElement(ExternalButton, { href: MAP_URL, variant: 'outline' }, 'Navigate')
-                )
-              )
-            ),
-            React.createElement('section', { className: 'mb-6 grid gap-4 lg:grid-cols-3' },
-              React.createElement(InfoCard, { title: 'Countdown', text: 'Counting the days until we celebrate together.' }, React.createElement(Countdown)),
-              React.createElement(InfoCard, { title: 'Venue', text: 'Ziya by Azha.' }, React.createElement(ExternalButton, { href: MAP_URL, variant: 'outline' }, 'Open Map')),
-              React.createElement(InfoCard, { title: 'RSVP', text: 'Responses are saved in Google Forms so we can prepare your place with love.' }, React.createElement(ExternalButton, { href: RSVP_URL }, 'Open RSVP Form'))
-            ),
-            React.createElement('aside', { className: 'mb-8 rounded-full border border-wedding-dustyPink/70 bg-wedding-palePink/80 px-6 py-5 text-center text-sm leading-7 text-wedding-ink/75 shadow-soft sm:text-base' }, 'We adore your children, but for one night we’d like to see what you all look like without them. Adults only, please. 🤍'),
-            React.createElement('footer', { className: 'pb-5 text-center' },
-              React.createElement('p', { className: 'font-script text-5xl text-wedding-olive' }, 'Youssef & Donia'),
-              React.createElement('p', { className: 'mt-2 font-serif text-xs uppercase tracking-[.28em] text-wedding-ink/55' }, '23.07.2026')
-            )
-          )
-        );
-      }
-
-      createRoot(document.getElementById('root')).render(React.createElement(App));
-    </script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
