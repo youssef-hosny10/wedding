@@ -109,7 +109,7 @@ function Details() {
     h('section', { className: 'details-intro', 'aria-labelledby': 'details-title' }, h('h2', { id: 'details-title', className: 'day-heading' }, 'Day Details'), h('p', { className: 'day-subtitle' }, 'Everything you need to know')),
     h('section', { className: 'mb-6 grid gap-4 lg:grid-cols-3' },
       h(DetailCard, { title: 'Wedding Day', subtitle: 'When', text: 'Thursday, 23 July 2026 at 7:00 PM. Please arrive a little early so the evening can begin beautifully.' }, h(ExternalButton, { href: RSVP_URL }, 'Confirm')),
-      h(DetailCard, { title: 'Ziya by Azha', subtitle: 'Venue', text: 'Ceremony and celebration will take place at the same venue.' }, h(ExternalButton, { href: MAP_URL, variant: 'outline' }, 'Open Map')),
+      h(DetailCard, { title: 'Ziya by Azha', subtitle: 'Venue', text: '' }, h(ExternalButton, { href: MAP_URL, variant: 'outline' }, 'Open Map')),
       h(DetailCard, { title: 'RSVP', subtitle: 'Response', text: 'Responses are saved in Google Forms so we can prepare your place with love.' }, h(ExternalButton, { href: RSVP_URL }, 'Open RSVP'))
     )
   );
