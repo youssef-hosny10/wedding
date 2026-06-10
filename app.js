@@ -3,7 +3,7 @@ import { createRoot } from 'https://esm.sh/react-dom@18.3.1/client';
 
 const h = React.createElement;
 const RSVP_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdj2nV5WhxTD3rOfWgEqQSYA3llViY_ETFsgMb74E9EtYpRjA/viewform';
-const MAP_URL = 'https://maps.app.goo.gl/aHEUKVNv4LNvgjwM8?g_st=iw';
+const MAP_URL = 'https://maps.app.goo.gl/pENHLrNUbLyzdLhB7?g_st=iw';
 const MUSIC_URL = 'wedding-music.mp3';
 const WEDDING_TIME = new Date('2026-07-23T19:00:00+03:00').getTime();
 const ENVELOPE_KEY = 'yd-envelope-art-v3-opened';
